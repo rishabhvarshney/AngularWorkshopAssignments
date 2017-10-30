@@ -1,0 +1,20 @@
+.login-main{
+  margin-top: 130px;
+}
+.multibox{
+  padding-left: 0px;
+  padding-bottom: 10px;
+}
+.login-main span{
+  font-size: 12px;
+}
+#texter{
+  align-content: center;
+  font-family: "Segoe UI";
+  text-align: center;
+}
+body{
+  font-family: 'Open Sans', sans-serif;
+  background-color: #dfe3ee;
+  align-content: center;
+}
