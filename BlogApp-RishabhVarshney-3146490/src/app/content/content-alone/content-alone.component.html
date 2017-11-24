@@ -1,0 +1,9 @@
+<div [routerLink]="['/blogs',event.id]" class="well hoverwell thumbnail">
+
+  <h2>{{event.title}}</h2>
+  <div><img width="200px" height="200px" src="{{event.logo}}"> </div>
+  <h3>{{event.authorName}}</h3>
+  <div>{{event.post}}</div>
+  <div><h4>{{event.category}}</h4></div>
+  <div>Date:{{event.date}}</div>
+</div>

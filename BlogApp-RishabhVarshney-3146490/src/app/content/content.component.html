@@ -1,0 +1,77 @@
+<app-header></app-header>
+<div *ngIf="userService.isAuthenticated()" [routerLink]="['user/login']">
+<h1 align="center">Favourites</h1>
+  <br>
+  <div class="col-sm-2"></div>
+  <div class='table-responsive col-sm-8'>
+    <table class='table'
+           *ngIf='favoriteBlogs && favoriteBlogs.length'>
+      <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Created On</th>
+        <th>Category</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor='let blog of favoriteBlogs'>
+        <td><a [routerLink]="['/blogs', blog.id]">
+          {{ blog.title }}
+        </a>
+        </td>
+        <td>{{blog.authorName}}</td>
+        <td>{{ blog.date }}</td>
+        <td>{{ blog.category }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <h1 align="center"> Blogs List</h1>
+  <br>
+<div class='row'>
+  <div class='col-md-2'><strong>Search by Title:</strong></div>
+  <div class='col-md-4'>
+    <input class="form-control" type='text' [(ngModel)]='listFilter' name="listFilter" />
+  </div>
+</div>
+<br>
+<div class="row">
+<div class='col-md-2'><strong>Filter By Category:</strong></div>
+<div class="col-md-4">
+<button class="btn btn-default" [class.active]="filterBy==='all'"  (click)="filterBy==='all'">Sports</button>
+<button class="btn btn-default" [class.active]="filterBy==='philosophy'"  (click)="filterBy==='philosophy'">Philosophy</button>
+<button class="btn btn-default" [class.active]="filterBy==='business'"  (click)="filterBy==='business'">Business</button>
+<button class="btn btn-default" [class.active]="filterBy==='tech'"  (click)="filterBy==='tech'">Tech</button>
+</div>
+</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto" *ngFor="let event of filteredContent" >
+        <div class="well hoverwell thumbnail">
+          <div class="post-preview">
+            <a href="post.html">
+              <h2 class="post-title">
+                <a [routerLink]="['/blogs', event.id]"> {{event.title}}</a>
+              </h2>
+              <div><img width="200px" height="200px" src="{{event.logo}}"> </div>
+              <h3 class="post-subtitle">
+                {{event.post}}
+              </h3>
+              <h4>{{event.category}}</h4>
+            </a>
+            <p class="post-meta">Posted by
+              {{event.authorName}}
+              {{event.date}}</p>
+            <td ><input type="button" class="btn btn-primary btn-sm" value="Mark Fav" (click)="markFavorite(event)"/></td>
+          </div>
+        </div>
+        <hr>
+
+      </div>
+    </div>
+  </div>
+
+
+</div>
+{{error}}
